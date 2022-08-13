@@ -9,12 +9,12 @@ public class Index {
         int consulta;
         do {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Qual algoritmo você deseja pesquisar?");
+            System.out.println("Qual algoritmo voce deseja pesquisar?");
             System.out.println("1->FIFO");
-            System.out.println("2->SFJ/Não-Preemptivo");
+            System.out.println("2->SFJ/Nao-Preemptivo");
             System.out.println("3->SFJ/Preemptivo");
-            System.out.println("4->Prioridade/Não-Preemptivo");
-            System.out.println("5->Prioridade/Não-Preemptivo");
+            System.out.println("4->Prioridade/Nao-Preemptivo");
+            System.out.println("5->Prioridade/Nao-Preemptivo");
             System.out.println("6->Round Robin");
             System.out.println("0->Sair do sistema");
             consulta = sc.nextInt();
@@ -30,6 +30,8 @@ public class Index {
                     fifo.populaArray(nroProcessos);
                     boolean flag = fifo.perguntaPopulaRandom(sc);
                     fifo.executarAlgoritmo(flag);
+                    float media = fifo.calculaTempoEsperaMedio();
+                    fifo.mostraTempoEsperaMedio(media);
                 }
 
                 case 2-> {
@@ -43,6 +45,8 @@ public class Index {
                     sjf.populaTemposAleatorio(flag);
                     sjf.ordenaElementos();
                     sjf.executaAlgoritmo();
+                    float media = sjf.calculaTempoEsperaMedio();
+                    sjf.mostraTempoEsperaMedio(media);
 
                 }
 
@@ -66,6 +70,8 @@ public class Index {
                     ArrayList<Processo> processos = sjf.arrayProcessos;
                     sjf.mostraProcessos();
                     sjf.executaAlgoritmoPreemptivo(processos);
+                    float media = sjf.calculaTempoEsperaMedio();
+                    sjf.mostraTempoEsperaMedio(media);
 
                 }
 
@@ -82,6 +88,8 @@ public class Index {
                     processos.sort(Comparator.comparingInt(Processo::getPrioridade));
                     prioridade.mostraProcessos();
                     prioridade.executaAlgoritmo(processos);
+                    float media = prioridade.calculaTempoEsperaMedio();
+                    prioridade.mostraTempoEsperaMedio(media);
 
 
                 }
@@ -107,6 +115,8 @@ public class Index {
                     processos.sort(Comparator.comparingInt(Processo::getPrioridade));
                     prioridade.mostraProcessos();
                     prioridade.executaAlgoritmoPreemptivo(processos);
+                    float media = prioridade.calculaTempoEsperaMedio();
+                    prioridade.mostraTempoEsperaMedio(media);
 
                 }
 
@@ -128,6 +138,8 @@ public class Index {
                     }
 
                     roundRobin.executaAlgoritmo();
+                    float media = roundRobin.calculaTempoEsperaMedio();
+                    roundRobin.mostraTempoEsperaMedio(media);
 
                 }
 

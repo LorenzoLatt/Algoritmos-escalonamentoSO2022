@@ -65,7 +65,7 @@ public abstract class Algoritmo {
 
     public int perguntaProcessos(Scanner scanner) {
 
-        System.out.println("Quantos processos você deseja criar");
+        System.out.println("Quantos processos voce deseja criar");
 
 
         return scanner.nextInt();
@@ -74,7 +74,7 @@ public abstract class Algoritmo {
     public boolean perguntaPopulaRandom(Scanner scanner) {
 
 
-        System.out.println("Você deseja popular aleatoriamente os tempos de execuções do processo? Y/N");
+        System.out.println("Voce deseja popular aleatoriamente os tempos de execucoes do processo? Y/N");
         String resposta = scanner.nextLine();
 
         return resposta.equalsIgnoreCase("y");
@@ -99,6 +99,22 @@ public abstract class Algoritmo {
             prioridadeAleatoria(arrayProcessos.get(i), flag, i);
 
         }
+
+    }
+
+    public float calculaTempoEsperaMedio() {
+        int somaTempos = 0;
+        for(int i = 0; i < arrayProcessos.toArray().length; i++) {
+
+            somaTempos += arrayProcessos.get(i).tempoExecucao;
+        }
+
+        return (float)somaTempos/arrayProcessos.toArray().length;
+    }
+
+    public void mostraTempoEsperaMedio(float media) {
+
+        System.out.printf("A media do tempo de espera eh: %.2f ", media);
 
     }
 
