@@ -14,7 +14,7 @@ public class Index {
             System.out.println("2->SFJ/Nao-Preemptivo");
             System.out.println("3->SFJ/Preemptivo");
             System.out.println("4->Prioridade/Nao-Preemptivo");
-            System.out.println("5->Prioridade/Nao-Preemptivo");
+            System.out.println("5->Prioridade/Preemptivo");
             System.out.println("6->Round Robin");
             System.out.println("0->Sair do sistema");
             consulta = sc.nextInt();
