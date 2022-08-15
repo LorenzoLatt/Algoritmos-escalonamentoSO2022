@@ -69,16 +69,6 @@ public class SJF extends Algoritmo {
         }
 
 
-    public void mostraProcessos() {
-
-        for(int i = 0; i < arrayProcessos.toArray().length; i++) {
-
-            System.out.println("Tempo de chegada do processo: " + arrayProcessos.get(i).id +
-                    "\n" +  arrayProcessos.get(i).tempoChegada +
-                    "\nTempo de execucao do processo: " + arrayProcessos.get(i).id +
-                     "\n" + arrayProcessos.get(i).tempoExecucao);
-        }
-    }
 
     public void executaAlgoritmoPreemptivo(ArrayList<Processo> processos) {
 

@@ -9,26 +9,17 @@ public class Prioridade extends Algoritmo{
         arrayProcessos.sort(Comparator.comparingInt(Processo::getTempoChegada));
     }
 
-    public void mostraProcessos() {
-
-        for(int i = 0; i < arrayProcessos.toArray().length; i++) {
-
-            System.out.println("Tempo de chegada do processo: " + arrayProcessos.get(i).id +
-                    "\n" +  arrayProcessos.get(i).tempoChegada +
-                    "\nTempo de execucao do processo: " + arrayProcessos.get(i).id +
-                    "\n" + arrayProcessos.get(i).tempoExecucao +
-                    "\nPrioridade = " + arrayProcessos.get(i).prioridade);
-        }
-    }
 
     public void executaProcesso(Processo auxProcesso, Processo processo) {
+
+        Processo antigoProcesso = processo;
         processo.setTempoRestante(processo.tempoExecucao);
         int auxPrioridade;
         for (int i = 0; i < processo.tempoExecucao; i++) {
 
             auxPrioridade = processo.prioridade;
-            if (auxProcesso.tempoChegada < processo.tempoChegada && auxProcesso.prioridade > processo.prioridade) {
-
+            if (auxProcesso.tempoChegada <= antigoProcesso.tempoChegada && auxProcesso.prioridade > antigoProcesso.prioridade) {
+                antigoProcesso = processo;
                 processo = auxProcesso;
                 auxPrioridade = auxProcesso.prioridade;
             }
@@ -85,7 +76,7 @@ public class Prioridade extends Algoritmo{
 
         for(int i = 0; i < this.arrayProcessos.toArray().length; i++) {
 
-            executaProcesso(processos.get(i), arrayProcessos.get(i));
+            executaProcesso(processos.get(i), arrayProcessos.get(i)); //(maior prioridade, menor tempo de chegada )
         }
     }
 

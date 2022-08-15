@@ -20,13 +20,9 @@ public class Fifo extends Algoritmo{
             }
         }
     }
-    public void executarAlgoritmo(boolean flag) {
+    public void executarAlgoritmo() {
 
-        for(int i = 0; i < this.arrayProcessos.toArray().length; i++) {
 
-            tempoAleatorio(this.arrayProcessos.get(i), flag, i);
-
-        }
 
         for(int i = 0; i < this.arrayProcessos.toArray().length; i++) {
 
@@ -34,5 +30,7 @@ public class Fifo extends Algoritmo{
         }
 
     }
+
+
 
 }

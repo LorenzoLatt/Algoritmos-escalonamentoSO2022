@@ -6,8 +6,12 @@ public abstract class Algoritmo {
 
     ArrayList<Processo> arrayProcessos = new ArrayList<>();
 
+    public void initialArray(ArrayList<Processo> arrayProcessos) {
+        this.arrayProcessos = arrayProcessos;
+    }
 
-    public void populaArray(int numeroProcessos) {
+
+    public  void populaArray(int numeroProcessos) {
 
         for(int i = 0; i < numeroProcessos; i++) {
 
@@ -16,21 +20,22 @@ public abstract class Algoritmo {
 
     }
 
-    public void tempoAleatorio(Processo processo, boolean flag, int index) {
+    public void tempoAleatorio(Processo processo, boolean flag, Scanner sc) {
 
         Random rand = new Random();
 
         if(flag) {
 
-            processo.tempoExecucao = rand.nextInt(10);
+            processo.tempoExecucao = rand.nextInt(1,10);
         } else {
 
-            processo.tempoExecucao = index + 5;
+            System.out.println("Informe um valor para o tempo de execucão do processo " + processo.id + ":");
+            processo.tempoExecucao = sc.nextInt();
         }
 
     }
 
-    public void tempoAleatorioChegada(Processo processo, boolean flag, int index) {
+    public void tempoAleatorioChegada(Processo processo, boolean flag, Scanner sc) {
 
         Random rand = new Random();
 
@@ -38,16 +43,17 @@ public abstract class Algoritmo {
 
             if (flag) {
 
-                processo.tempoChegada = rand.nextInt(10);
+                processo.tempoChegada = rand.nextInt(1,10);
             } else {
 
-                processo.tempoChegada = index + 5;
+                System.out.println("Informe um valor para o tempo de chegada do processo " + processo.id + ":");
+                processo.tempoChegada = sc.nextInt();
             }
 
 
     }
 
-    public void prioridadeAleatoria(Processo processo, boolean flag, int index) {
+    public void prioridadeAleatoria(Processo processo, boolean flag,Scanner sc) {
 
         Random rand = new Random();
 
@@ -56,7 +62,8 @@ public abstract class Algoritmo {
             processo.prioridade = rand.nextInt(10);
         } else {
 
-            processo.prioridade = index + 5;
+            System.out.println("Informe um valor para a prioridade do processo " + processo.id + ":");
+            processo.prioridade = sc.nextInt();
         }
 
     }
@@ -89,14 +96,14 @@ public abstract class Algoritmo {
         return somaTemposExecucao;
     }
 
-    public void populaTemposAleatorio(boolean flag) {
+    public void populaTempos(boolean flag, Scanner sc) {
 
 
         for(int i = 0; i < arrayProcessos.toArray().length; i++) {
 
-            tempoAleatorio(arrayProcessos.get(i), flag, i);
-            tempoAleatorioChegada(arrayProcessos.get(i), flag, i);
-            prioridadeAleatoria(arrayProcessos.get(i), flag, i);
+            tempoAleatorio(arrayProcessos.get(i), flag, sc);
+            tempoAleatorioChegada(arrayProcessos.get(i), flag, sc);
+            prioridadeAleatoria(arrayProcessos.get(i), flag, sc);
 
         }
 
@@ -116,6 +123,16 @@ public abstract class Algoritmo {
 
         System.out.printf("A media do tempo de espera eh: %.2f ", media);
 
+    }
+
+    public void mostraProcesso() {
+
+        for(Processo processo: arrayProcessos) {
+
+            System.out.println("processo: " + processo.id + " - tempo de execução: " + processo.tempoExecucao +
+                    " - tempo de chegada: " + processo.tempoChegada + " - Prioridade: " + processo.prioridade);
+
+        }
     }
 
 }
